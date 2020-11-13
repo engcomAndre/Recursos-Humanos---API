@@ -26,7 +26,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private static final String[] PUBLIC_MATCHERS = {"/h2-console/**","/test"};
+    private static final String[] PUBLIC_MATCHERS = {"/h2-console/**","/database"};
     private static final String[] PUBLIC_MATCHERS_GET = {};
     private static final String[] PUBLIC_MATCHERS_POST = {};
     private static final String[] PUBLIC_MATCHERS_PUT = {};

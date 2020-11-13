@@ -42,7 +42,7 @@ public class Employer implements Serializable {
     private String career;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name="employer_department",
+    @JoinTable(name = "employer_department",
             joinColumns = {@JoinColumn(name = "employer_id")},
             inverseJoinColumns = {@JoinColumn(name = "department_id")})
     @JsonIgnore

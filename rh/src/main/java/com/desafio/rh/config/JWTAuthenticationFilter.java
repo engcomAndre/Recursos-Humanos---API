@@ -4,6 +4,7 @@ import com.desafio.rh.config.security.SecurityEntity;
 import com.google.gson.Gson;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import lombok.AllArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -20,13 +21,10 @@ import java.util.Map;
 
 import static com.desafio.rh.config.SecurityConstants.*;
 
+@AllArgsConstructor
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
     private final AuthenticationManager authenticationManager;
-
-    public JWTAuthenticationFilter(AuthenticationManager authenticationManager) {
-        this.authenticationManager = authenticationManager;
-    }
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
@@ -71,7 +69,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
     private void makeUnsuccesfulAuthenticationResponseBody(HttpServletResponse response) throws IOException {
         Map<String, String> responseMap = new HashMap<>();
-        responseMap.put("message", "Authentication UNSUCCESFUL.");
+        responseMap.put("message", "Authentication UNSUCCESSFUL.");
         response.setStatus(HttpServletResponse.SC_NOT_ACCEPTABLE);
         response.getWriter().write(new Gson().toJson(responseMap));
     }
@@ -79,7 +77,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     private void makeSuccessfullyAuthenticationResponseBody(HttpServletResponse response, String bearerToken) throws IOException {
         Map<String, String> responseMap = new HashMap<>();
         response.addHeader(HEADER_STRING, bearerToken);
-        responseMap.put("message", "Authentication SUCCESFUL.");
+        responseMap.put("message", "Authentication SUCCESSFUL.");
         responseMap.put("token_type", TOKEN_PREFIX);
         responseMap.put("access_token", bearerToken);
         response.setStatus(HttpServletResponse.SC_ACCEPTED);
