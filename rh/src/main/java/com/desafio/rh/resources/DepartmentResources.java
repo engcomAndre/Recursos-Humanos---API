@@ -15,7 +15,7 @@ import java.util.List;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
-@Api(tags = {"2 - Departamentos"}, value = "Recursos de Eventos", hidden = true, produces = APPLICATION_JSON_VALUE, consumes = APPLICATION_JSON_VALUE)
+@Api(tags = {"2 - Departamentos"}, value = "Recursos de Departamentos", hidden = true, produces = APPLICATION_JSON_VALUE, consumes = APPLICATION_JSON_VALUE)
 @AllArgsConstructor
 @RestController
 @RequestMapping("/department")
