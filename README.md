@@ -67,3 +67,12 @@ sudo docker login -u={USUARIO_DOCKER_HUB} -p={SENHA}
 ```
 sudo docker run -d -p 8080:8080 -t sgavsnake/rh:0.0.1
 ```
+##### Autenticação
+Use as dados abaixo para realizar autenticação na API [somente para testes]
+```
+login: admin
+password: admin
+```
+
+
+
